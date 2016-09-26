@@ -1,0 +1,209 @@
+[
+ {
+   "speakerName": "William Meisel",
+   "Creds": " President",
+   "Company": "TMA Associates",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Jean-Pierre Abello ",
+   "Creds": "Director, Global Engineering R&D ",
+   "Company": "Nielsen",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Jan Lasek",
+   "Creds": "Data Scientist",
+   "Company": "deepsense.io",
+   "Description": "Jan Lasek is a member of the deepsense.io machine learning team. He has earned two prestigious degrees: a M.Sc. in Economics from the University of Warsaw (UW) and a M.Sc. in Mathematics from both VU University Amsterdam and UW. He is currently pursuing his PhD at the Institute of Computer Science, part of the Polish Academy of Sciences. In his current research, Jan works on sports analytics with a major focus on processing football related data. This is a dream come true because it gives him a chance to connect his two passions - sports and science. He is an author of several publications in the area of data analysis. As an instructor he reads the R language for statistical computing at Warsaw University of Technology.",
+   "imageURL": "http://aiworldexpo.com/wp-content/uploads/2016/06/aiworld_speakers_janlasek.jpg",
+   "Sessions": "Workshop: Machine Learning in the Enterprise - Open to All Attendees",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Christina Apatow",
+   "Creds": "VP of Client Solutions",
+   "Company": "API.ai",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Andy Peart",
+   "Creds": "Chief Marketing Officer",
+   "Company": "Artificial Solutions",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Jeff Adams",
+   "Creds": "CEO",
+   "Company": "Cobalt Speech & Language",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Jennifer Marsman",
+   "Creds": "Dev. Evangelist",
+   "Company": "Microsoft",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Robert Bogucki",
+   "Creds": "CSO",
+   "Company": "deepsense.io",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Manohar Paluri",
+   "Creds": "Research Lead/Manager",
+   "Company": "Facebook AI Research",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Ravi Srivatsav",
+   "Creds": "Chief Business Development Officer",
+   "Company": "NTT ",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Beena Ammanath",
+   "Creds": "Executive Director,  Data Science",
+   "Company": "General Electric",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Mark Bünger",
+   "Creds": "VP Research, Conference Co-Chair",
+   "Company": "Lux Research",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Linda Bernardi",
+   "Creds": "Author, Entrepreneur, Innovator",
+   "Company": "McKinsey Global Institute",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Micheal Chui",
+   "Creds": "Partner",
+   "Company": "McKinsey Global Institute",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Dr. Neil Eklund",
+   "Creds": "Chief Data Scientist",
+   "Company": "Schlumberger",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "David Ledbetter",
+   "Creds": "Data, Scientist",
+   "Company": "Children's Hospital Los Angeles",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Danny Lange",
+   "Creds": "Head of Machine Learning",
+   "Company": "Uber",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Dr. Harrick Vin",
+   "Creds": "Vice President and Chief Scientist",
+   "Company": "digitate",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Umair Akeel",
+   "Creds": "Partner",
+   "Company": "Bessemer",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Chris Farmer",
+   "Creds": "CEO/Co-Founder",
+   "Company": "SignalFire",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Tim Chang",
+   "Creds": "Managing Director",
+   "Company": "Mayfield Fund",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Patrick Eggen",
+   "Creds": "Head of Ventures Norht America",
+   "Company": "Qualcomm Ventures",
+   "Description": "",
+   "imageURL": "",
+   "Sessions": "",
+   "FIELD7": ""
+ },
+ {
+   "speakerName": "Robert Bogucki",
+   "Creds": "Chief Science Officer",
+   "Company": "Deepsense.io",
+   "Description": "Robert is the Chief Science Officer of Deepsense.io where he manages the R&D team and focuses on deep learning and mathematical research. He started his professional career as a software engineer at UBS. Prior to joining deepsense.io, he worked on Big Data and Machine Learning problems as a project manager at CodiLime. Robert is a dual major holding Master degrees in Mathematics and Computer Science from University of Warsaw. His interests include probability theory, functional analysis and theoretical computer science, which became a subject of his publications. He is also a successful Kaggle competitor.",
+   "imageURL": "http://aiworldexpo.com/wp-content/uploads/2016/06/RobertBogucki-263x273fin.jpg",
+   "Sessions": "Executive Roundtable: Evolution or Disruption?, Workshop: Machine Learning in the Enterprise - Open to All Attendees",
+   "FIELD7": ""
+ }
+]
