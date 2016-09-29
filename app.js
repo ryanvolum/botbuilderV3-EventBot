@@ -47,7 +47,7 @@ bot.dialog('/error', [
 
 bot.dialog('/promptButtons', [
     function (session) {
-        builder.Prompts.choice(session, "How would you like to explore the AI conference?", ['Sessions', 'People', 'Sponsors/Expos']);
+        builder.Prompts.choice(session, "How would you like to explore the AI conference?", "Sessions|People|Sponsors/Sessions");
     },
     function (session, results) {
         if (results.response) {
