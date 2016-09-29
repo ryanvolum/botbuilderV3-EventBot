@@ -1,65 +1,92 @@
 [
  {
    "Title": "Intelligent Assistants & Bots - What You Need to Know",
-   "Start Time": "1:00 PM",
-   "End Time": "2:45 PM",
+   "startTime": "1:00 PM",
+   "endTime": "2:45 PM",
    "Description": "Intensive 1/2 day workshop on the current state of the Intelligent Assistant/Bot market and in-depth information on the many different varieties of intelligent assistants in the market and how an enterprise can build its own Bot.",
-   "Speaker(s)": "William Meisel",
+   "Speakers": "William Meisel",
    "Track": "Workshop - Building an Application-Specific Bot",
-   "Links": ""
+   "Links": "",
+   "Day": "Monday"
  },
  {
-   "Title": "The Machine Learning Market Today: The Who, What and Why of Enterprise ML",
-   "Start Time": "1:00PM ",
-   "End Time": "2:45 PM",
+   "Title": "The Machine Learning Market\nToday: The Who, What and Why of\nEnterprise ML",
+   "startTime": "1:00PM ",
+   "endTime": "2:45 PM",
    "Description": "Intensive 1/2 day workshop providing comprehensive introduction to Enterprises on the entire machine learning industry, different options, players and technologies.",
-   "Speaker(s)": "Jan Lasek",
+   "Speakers": "Jan Lasek",
    "Track": "Workshop - Machine Learning in the Enterprise",
-   "Links": ""
+   "Links": "",
+   "Day": "Monday"
  },
  {
    "Title": "AI World Executive Summit",
-   "Start Time": "1:00 PM",
-   "End Time": "4:45 PM",
+   "startTime": "1:00 PM",
+   "endTime": "4:45 PM",
    "Description": "",
-   "Speaker(s)": "",
-   "Track": "",
-   "Links": ""
+   "Speakers": "JP (Jean-Pierre) Abello, Beena Ammanath, Mark Bünger, Linda Bernardi,  Micheal Chui, Dr. Neil Eklund, David Ledbetter, Danny Lange, Dr. Harrick Vin, ",
+   "Track": "AI World Executive Summit",
+   "Links": "aiworldexpo.com/ai-executive-summit/",
+   "Day": "Monday"
  },
  {
    "Title": "Expo Opens",
-   "Start Time": "14:45",
-   "End Time": "3:15 PM",
+   "startTime": "14:45",
+   "endTime": "3:15 PM",
    "Description": "",
-   "Speaker(s)": ["JP (Jean-Pierre) Abello", "Beena Ammanath", "Mark Bünger", "Linda Bernardi",  "Micheal Chui", "Dr. Neil Eklund", "David Ledbetter", "Danny Lange", "Dr. Harrick Vin"],
-   "Track": "AI World Executive Summit",
-   "Links": "aiworldexpo.com/ai-executive-summit/"
+   "Speakers": "",
+   "Track": "",
+   "Links": "",
+   "Day": "Monday"
  },
  {
    "Title": "Bot Workshop Second Half",
-   "Start Time": "3:15 PM",
-   "End Time": "4:45 PM",
+   "startTime": "3:15 PM",
+   "endTime": "4:45 PM",
    "Description": "",
-   "Speaker(s)": "",
-   "Track": "",
-   "Links": ""
+   "Speakers": "",
+   "Track": "Workshop - Building an Application-Specific Bot",
+   "Links": "",
+   "Day": "Monday"
+ },
+ {
+   "Title": "State-of-the-Practice in ML\nfor the Enterprise",
+   "startTime": "3:15PM",
+   "endTime": "4:45 PM",
+   "Description": "Panel of four world class heads of machine\nlearning will present what they are doing\nat their companies, how ML is disrupting\ntheir industries, and critical lessons learned\nin deploying enterprise class machine\nlearning applications.",
+   "Speakers": "Jan Lasek, Robert Bogucki, Manohar Paluri,  Ravi Srivatsav",
+   "Track": "Workshop - Machine Learning in the Enterprise",
+   "Links": "",
+   "Day": ""
  },
  {
    "Title": "Break with Exhibitors",
-   "Start Time": "4:45 PM",
-   "End Time": "5:00 PM",
+   "startTime": "4:45 PM",
+   "endTime": "5:00 PM",
    "Description": "",
-   "Speaker(s)": "",
+   "Speakers": "",
    "Track": "",
-   "Links": ""
+   "Links": "",
+   "Day": "Monday"
  },
  {
    "Title": "Building the Ecosystem: Investment, Alliances and Partnering",
-   "Start Time": "5:00 PM",
-   "End Time": "5:45 PM",
+   "startTime": "5:00 PM",
+   "endTime": "5:45 PM",
    "Description": "",
-   "Speaker(s)": "Umair Akeel, Chris Farmer, Tim Chang, Patrick Eggen",
+   "Speakers": "Umair Akeel, Chris Farmer, Tim Chang, Patrick Eggen",
    "Track": "General Session Panel",
-   "Links": ""
+   "Links": "",
+   "Day": "Monday"
+ },
+ {
+   "Title": "Example event",
+   "startTime": "1:00 PM",
+   "endTime": "4:00PM",
+   "Description": "",
+   "Speakers": "John Smith, Ryan Volum",
+   "Track": "Pretend Workshop",
+   "Links": "",
+   "Day": "Tuesday"
  }
 ]

@@ -5,7 +5,7 @@ module.exports = function(){
         },
         function (session, results) {
             var name = results.response;
-                performSearch(name, function(err, results) {
+                performSearch(name, 'temp', function(err, results) {
                     if(err) {
                     }               
                     if(results) {

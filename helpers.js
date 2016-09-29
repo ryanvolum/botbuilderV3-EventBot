@@ -55,7 +55,7 @@
 
     global.generateMessageTitle = function(session){
         if(session.privateConversationData.searchType && session.privateConversationData.queryResults){
-            var result = session.privateConversationData.queryResults[0];
+            var result = session.privateConversationData.queryResults;
             var msgTitle;
             switch(session.privateConversationData.searchType){
                 case "person":
@@ -64,18 +64,21 @@
                     } else {                        
                         msgTitle = "Here is the person who best matches your search:";
                     }
+                    break;
                 case "event":
-                    if(result.length > 1){
-
-                    } else {
-
+                    if (result.length > 1) {                        
+                        msgTitle = "Here are the events that best match your search:";
+                    } else {                        
+                        msgTitle = "Here is the event that best matches your search:";
                     }
+                    break;
                 case "sponsor":
-                    if(result.length > 1){
-
-                    } else {
-
-                    }                    
+                    if (result.length > 1) {                        
+                        msgTitle = "Here are the sponsors that best match your search:";
+                    } else {                        
+                        msgTitle = "Here is the sponsor that best matches your search:";
+                    }      
+                    break;             
             }
             return msgTitle;
         }

@@ -69,7 +69,7 @@ bot.dialog('/promptButtons', [
     }
 ]);
 
-require('./dialogs/sessions.js')();
+require('./dialogs/events.js')();
 require('./dialogs/people.js')(); 
 require('./dialogs/sponsors.js')(); 
 require('./dialogs/results.js')();
