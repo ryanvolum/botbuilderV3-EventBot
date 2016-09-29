@@ -11,9 +11,11 @@ require('./search.js')();
 // Entry point of the bot
 bot.dialog('/', [
     function (session) {
+        /*
         if(!session.message.source == "skype"){
             useQuickReply = false;
         }
+        */
         //If this is our first time seeing this user
         if (session.userData.welcome != true)
         {
