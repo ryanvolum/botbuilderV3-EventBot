@@ -4,19 +4,13 @@ require('./config.js')();
 require('./connectorSetup.js')();
 require('./helpers.js')();
 require('./search.js')();
-
-
-//require('./lib/msgMiddleware.js')(); // message middleware
+require('./callLUIS.js')();
+require('./msgMiddleware.js')(); // message middleware
 
 // Entry point of the bot
 bot.dialog('/', [
     function (session) {
-        /*
-        if(!session.message.source == "skype"){
-            useQuickReply = false;
-        }
-        */
-        //If this is our first time seeing this user
+        session.privateConversationData.clickingButtons = false;
         if (session.userData.welcome != true)
         {
              session.replaceDialog('/welcome');
@@ -47,7 +41,7 @@ bot.dialog('/error', [
 
 bot.dialog('/promptButtons', [
     function (session) {
-        builder.Prompts.choice(session, "How would you like to explore the AI conference?", "Sessions|People|Sponsors/Sessions");
+        builder.Prompts.choice(session, "How would you like to explore the AI conference?", "Sessions|People|Sponsors/Expos");
     },
     function (session, results) {
         if (results.response) {
@@ -55,12 +49,15 @@ bot.dialog('/promptButtons', [
             // route to corresponding dialogs
             switch (selection) {
                 case "Sessions":
+                    session.privateConversationData.clickingButtons = true;
                     session.replaceDialog('/sessions');
                     break;
                 case "People":
+                    session.privateConversationData.clickingButtons = true;
                     session.replaceDialog('/people');
                     break;
                 case "Sponsors/Expos":
+                    session.privateConversationData.clickingButtons = true;
                     session.replaceDialog('/sponsors');
                     break;
                 default:
@@ -75,3 +72,5 @@ require('./dialogs/events.js')();
 require('./dialogs/people.js')(); 
 require('./dialogs/sponsors.js')(); 
 require('./dialogs/results.js')();
+require('./dialogs/FAQ.js')();
+

@@ -1,7 +1,7 @@
 module.exports = function(){
     bot.dialog('/sessions', [
         function (session) {
-            builder.Prompts.choice(session, "What day are you interested in?", ['Monday November 7th', 'Tuesday November 8th', 'Wednesday November 9th']);
+            builder.Prompts.choice(session, "What day are you interested in?", ['Monday 11/7', 'Tuesday 11/8', 'Wednesday 11/9']);
         },
         function (session, results) {
             if (results.response) {

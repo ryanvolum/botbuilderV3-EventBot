@@ -22,4 +22,16 @@ module.exports = function() {
             }
         });
     }
+
+    global.getEventsBySpeaker = function (speakerName, callback){
+        searchClient.search('eventindex' , {$filter: "Speakers eq '" + speakerName + "'", $top: 10}, function(err, results){
+            if(err) {
+                callback(err);
+            } else if (results.length > 0){
+                callback(null, results);
+            } else {
+                callback();
+            }
+    });
+    }
 }
