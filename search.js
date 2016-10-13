@@ -1,6 +1,6 @@
 module.exports = function() {    
-    global.performSearch = function(speakerName, index, callback) {
-        searchClient.search(index, {search: speakerName, $top: 5}, function(err, results) {
+    global.performSearch = function(name, index, callback) {
+        searchClient.search(index, {search: name, $top: 5}, function(err, results) {
             if (err) {
                 callback(err);
             } else if (results.length > 0) {                
