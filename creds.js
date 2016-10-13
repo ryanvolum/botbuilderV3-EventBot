@@ -1,6 +1,6 @@
 exports.connection = {  
-     endpoint: 'https://aiconference.documents.azure.com:443/',
-     authKey: '6YdYRwMDFaCbrHS3vjNjqB8DeOhe8h6IEshPkmxlFATsxn69exblRF9krAr2cuWldTxuGtMTzuzsVnxVpQzJDA=='  
+     endpoint: env.DocumentDBendpoint,
+     authKey: env.authKey
  };  
  
  exports.names = {  
