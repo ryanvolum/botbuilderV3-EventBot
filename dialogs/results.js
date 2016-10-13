@@ -57,6 +57,7 @@ module.exports = function() {
             if(msgTitle){
                 session.send(msgTitle);
             }
+            resetQuery(session);
             session.endDialog(msg);
     }
     ]);

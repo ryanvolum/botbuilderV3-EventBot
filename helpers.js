@@ -43,7 +43,12 @@
         resetQuery(session);
         session.reset('/');
     }
-}
+
+    global.resetQuery = function(session){
+        session.privateConversationData.clickingButtons = false;
+        session.privateConversationData.queryResults = null;
+        session.privateConversationData.searchType = null;
+    }
 
     global.restartDialog = function(session, target) {
         if (session.sessionState.callstack.length > 0) {
@@ -82,4 +87,5 @@
             }
             return msgTitle;
         }
+    }   
     }

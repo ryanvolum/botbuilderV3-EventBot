@@ -1,26 +1,33 @@
 module.exports = function () {
 
-    global.performQuery = function (session) {
-        var queryStatement = "SELECT * FROM c WHERE CONTAINS(c.Speakers, \"" + speakerName + "\")";
+getPersonsEvents = function (speakerName, callback){
+    var querySpec = {
+        query: "SELECT * FROM c WHERE CONTAINS(c.Speakers, \"" + speakerName + "\")"
+    };        
+    // query documentDB
+        client.queryDocuments(collLink, querySpec).toArray(function (err, results) {    
+            if(err){
+                callback(err);
+            } else if (results){
+                var s = "";
+                callback(null, results);
+            }         
+        });
+    }
 
+    global.eventQuery = function (eventName, callback) {
         var querySpec = {
-            query: queryStatement
+            query: "SELECT * FROM c WHERE c.Title = \"" + eventName + "\""
         };        
 
         // query documentDB
         client.queryDocuments(collLink, querySpec).toArray(function (err, results) {
-            if (err) {
-                    session.replaceDialog('/error');
-                    return;
-            } else if (results && results.length === 0) {
-                session.send(`There's nothing for ${generateTitle(session, 'results')}.`);
-                session.replaceDialog('/RandomRecommended');
-            } else {
-                // show the results
-                session.privateConversationData.queryResults = sortedQueryResults(results);
-                session.privateConversationData.resultPage = 0;
-                session.replaceDialog('/ShowResults', { querySpec: querySpec });
-            }
+            if(err){
+                callback(err);
+            } else if (results){
+                var s = "";
+                callback(null, results);
+            }         
         });
     }
 

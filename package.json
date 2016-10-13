@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "azure-search": "0.0.9",
-    "botbuilder": "^3.2.3",
+    "botbuilder": "^3.3.0",
     "documentdb": "^1.10.0",
     "request": "^2.75.0",
     "restify": "^4.1.1"

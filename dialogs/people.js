@@ -14,7 +14,8 @@ module.exports = function(){
                         session.privateConversationData.queryResults = results;  
                         session.privateConversationData.searchType = "person";
                         
-                        getPersonsEvents(name, function (err, results){
+                        var queryString = "SELECT c.Title FROM c WHERE CONTAINS(c.Speakers, \"" + name + "\")";
+                        performQuery(queryString, function (err, results){
                             if(err){
                                 console.log(err);
                             }
@@ -34,9 +35,9 @@ module.exports = function(){
     ]);
 }
 
-getPersonsEvents = function (speakerName, callback){
+performQuery = function (queryString, callback){
     var querySpec = {
-        query: "SELECT * FROM c WHERE CONTAINS(c.Speakers, \"" + speakerName + "\")"
+        query: queryString
     };        
     // query documentDB
     client.queryDocuments(collLink, querySpec).toArray(function (err, results) {    
@@ -45,6 +46,8 @@ getPersonsEvents = function (speakerName, callback){
         } else if (results){
             var s = "";
             callback(null, results);
+        } else {
+            callback(null, null);
         }         
     });
 }
