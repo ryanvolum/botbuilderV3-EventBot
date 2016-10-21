@@ -1,8 +1,8 @@
 module.exports = function() {
     var AzureSearch = require('azure-search');
     global.searchClient = AzureSearch({
-        url: env.AZURESEARCHURL,
-        key: env.AZURESEARCHKEY
+        url: process.env.AZURE_SEARCH_URL,
+        key: process.env.AZURE_SEARCH_KEY
     });
 
     var DocumentDBClient = require('documentdb').DocumentClient

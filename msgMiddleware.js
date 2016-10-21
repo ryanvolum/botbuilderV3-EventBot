@@ -17,8 +17,7 @@ module.exports = function () {
                     } else {
                         recognizeThis(msg, modelUrl, function (err, results, entities) {
                             var s = "";
-                            if (results && results[0] && results[0].intent) {
-                                if (results[0].score > .5 && results[0].intent != "None") {
+                            if (results && results[0] && results[0].intent && results[0].score > .5 && results[0].intent != "None") {
                                     session.replaceDialog("/" + results[0].intent, { entities });
                                 } else {
                                     //Search person collection
@@ -47,7 +46,6 @@ module.exports = function () {
                                         }
                                     });
                                 }
-                            }
                         });
                     }
                 });

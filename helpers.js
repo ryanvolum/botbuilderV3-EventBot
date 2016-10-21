@@ -48,6 +48,7 @@
         session.privateConversationData.clickingButtons = false;
         session.privateConversationData.queryResults = null;
         session.privateConversationData.searchType = null;
+        session.privateConversationData.speakersEvents = null;
     }
 
     global.restartDialog = function(session, target) {

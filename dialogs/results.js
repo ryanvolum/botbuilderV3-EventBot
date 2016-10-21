@@ -11,14 +11,15 @@ module.exports = function() {
                     var result = results[0];
                     // Use default image if none provided
                     var img = result.imageURL ? result.imageURL : "https://bumberbot.blob.core.windows.net/maps/white.img"; 
-                    var eventOne = session.privateConversationData.speakersEvents[0];
                     //I'm here
                     var buttonActions = [];
                     
-                    for(var i = 0; i < session.privateConversationData.speakersEvents.length; i++){
-                        buttonActions.push(builder.CardAction.postBack(session, session.privateConversationData.speakersEvents[i], session.privateConversationData.speakersEvents[i]));
+                    if(session.privateConversationData.speakersEvents && session.privateConversationData.speakersEvents.length > 0){
+                        for(var i = 0; i < session.privateConversationData.speakersEvents.length; i++){
+                            var speakerEvent = session.privateConversationData.speakersEvents[i].replace(/(\r\n|\n|\r)/gm,"");
+                            buttonActions.push(builder.CardAction.postBack(session, speakerEvent, speakerEvent));
+                        }
                     }
-
                         msg.addAttachment(
                             new builder.HeroCard(session)
                             .title(result.speakerName)
@@ -44,7 +45,7 @@ module.exports = function() {
                 case "sponsor":
                     var result = results[0];
                     // Use default image if none provided
-                    var img = result.imageURL ? result.imageURL : "https://bumberbot.blob.core.windows.net/maps/white.img"; 
+                    var img = result.imageURL ? result.imageURL : ""; 
                     msg.addAttachment(
                         new builder.HeroCard(session)
                         .title(result.Company)

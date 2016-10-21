@@ -1,6 +1,6 @@
 exports.connection = {  
-     endpoint: env.DocumentDBendpoint,
-     authKey: env.authKey
+     endpoint: process.env.AZURE_DOCDB_ENDPOINT,
+     authKey: process.env.AZURE_DOCDB_AUTHKEY  
  };  
  
  exports.names = {  

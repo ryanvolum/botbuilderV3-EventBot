@@ -11,8 +11,8 @@ module.exports = function() {
         });
     }
 
-    global.getEventsByDay = function(Day, callback) {
-        searchClient.search('eventindex' , {$filter: "Day eq '" + Day + "'", $top: 10 }, function(err, results) {
+    global.getEventsByDay = function(day, callback) {
+        searchClient.search('eventindex' , {$filter: "Day eq '" + day + "'", $top: 10 }, function(err, results) {
             if (err) {
                 callback(err);
             } else if (results.length > 0) {                

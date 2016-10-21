@@ -41,27 +41,25 @@ bot.dialog('/error', [
 
 bot.dialog('/promptButtons', [
     function (session) {
-        builder.Prompts.choice(session, "How would you like to explore the AI conference?", "Sessions|People|Sponsors/Expos");
+        builder.Prompts.choice(session, "How would you like to explore the AI conference?", "Sessions|People|Sponsors/Expos"/*, { listStyle: button }*/);
     },
     function (session, results) {
         if (results.response) {
+            session.privateConversationData.clickingButtons = true;
             var selection = results.response.entity;
             // route to corresponding dialogs
             switch (selection) {
                 case "Sessions":
-                    session.privateConversationData.clickingButtons = true;
                     session.replaceDialog('/sessions');
                     break;
                 case "People":
-                    session.privateConversationData.clickingButtons = true;
                     session.replaceDialog('/people');
                     break;
-                case "Sponsors/Expos":
-                    session.privateConversationData.clickingButtons = true;
+                case "Sponsors/Expos":f
                     session.replaceDialog('/sponsors');
                     break;
                 default:
-                    session.reset('/');
+                    restart(session);
                     break;
             }
         }
