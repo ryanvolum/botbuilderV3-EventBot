@@ -5,7 +5,9 @@ module.exports = function () {
             var msg = session.message.text;
             var recognizer = new builder.LuisRecognizer('https://api.projectoxford.ai/luis/v1/application?id=637e6cc7-7f9d-436e-84c8-31c91f4330bc&subscription-key=d20c9600f0894e28926d471cb716e6ac');
 
-            if (!session.privateConversationData.clickingButtons && msg != "People" && msg != "Sessions" && msg != "Sponsors/Expos") {
+            if(msg == "hi"){
+                restart(session);
+            } else if (!session.privateConversationData.clickingButtons && msg != "People" && msg != "Sessions" && msg != "Sponsors/Expos") {
                 var queryString = "SELECT * FROM c WHERE c.Title = \"" + msg + "\"";
                 performQuery(queryString, function (err, results) {
                     if (err) {

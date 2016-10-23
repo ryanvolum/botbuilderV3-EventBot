@@ -68,7 +68,10 @@
                     if (result.length > 1) {                        
                         msgTitle = "Here are the people that best match your search:";
                     } else {                        
-                        msgTitle = "Here is the person who best matches your search:";
+                        msgTitle = "Here is the person who best matches your search. ";
+                        if(session.message.source == "sms"){
+                            msgTitle += "This might take a bit :)";
+                        }
                     }
                     break;
                 case "event":

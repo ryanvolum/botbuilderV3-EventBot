@@ -41,7 +41,13 @@ bot.dialog('/error', [
 
 bot.dialog('/promptButtons', [
     function (session) {
-        builder.Prompts.choice(session, "How would you like to explore the AI conference?", "Sessions|People|Sponsors/Expos"/*, { listStyle: button }*/);
+        var choices = [
+            "Sessions",
+            "Sponsors/Expos",
+            "People",
+            "Social Media"]
+            
+        builder.Prompts.choice(session, "How would you like to explore the AI conference?", choices/*, { listStyle: button }*/);
     },
     function (session, results) {
         if (results.response) {
@@ -55,7 +61,7 @@ bot.dialog('/promptButtons', [
                 case "People":
                     session.replaceDialog('/people');
                     break;
-                case "Sponsors/Expos":f
+                case "Sponsors/Expos":
                     session.replaceDialog('/sponsors');
                     break;
                 default:
