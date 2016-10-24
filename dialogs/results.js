@@ -11,15 +11,18 @@ module.exports = function() {
                     var result = results[0];
                     // Use default image if none provided
                     var img = result.imageURL ? result.imageURL : "https://bumberbot.blob.core.windows.net/maps/white.img"; 
-                    //I'm here
-                    var buttonActions = [];
                     
-                    if(session.privateConversationData.speakersEvents && session.privateConversationData.speakersEvents.length > 0){
-                        for(var i = 0; i < session.privateConversationData.speakersEvents.length; i++){
-                            var speakerEvent = session.privateConversationData.speakersEvents[i].replace(/(\r\n|\n|\r)/gm,"");
-                            buttonActions.push(builder.CardAction.postBack(session, speakerEvent, speakerEvent));
-                        }
-                    }
+                    var buttonActions = [];
+
+                    if(session.message.source !== "sms"){
+                        if(session.privateConversationData.speakersEvents && session.privateConversationData.speakersEvents.length > 0){
+                            for(var i = 0; i < session.privateConversationData.speakersEvents.length; i++){
+                                var speakerEvent = session.privateConversationData.speakersEvents[i].replace(/(\r\n|\n|\r)/gm,"");
+                                buttonActions.push(builder.CardAction.postBack(session, speakerEvent, speakerEvent));
+                            }
+                        }                        
+                    } 
+
                         msg.addAttachment(
                             new builder.HeroCard(session)
                             .title(result.speakerName)
@@ -30,7 +33,22 @@ module.exports = function() {
                         );
                     break;
                 case "event":
-                    //var img = result.imageURL ? result.imageURL : "https://bumberbot.blob.core.windows.net/maps/white.img"; 
+                    if(session.message.source === "sms"){
+                        //msgArray is an array of messages of three entries or the greatest number under 160 chars
+                        var msgArray = [];
+                        var msg = "";
+                        results.forEach(function (result, i){
+                            if((i+1)%3===0 || ((msg.length + result.startTime.length + result.endTime.length + result.Title.length + 10) > 160)){
+                                msgArray.push(msg);
+                                msg = "";
+                            }
+                            msg += result.startTime + " - " + result.endTime + ": " + result.Title + "\n\n";
+
+                        })
+                        if(msg.length > 0){
+                            msgArray.push(msg);
+                        }
+                    } else {
                     results.forEach(function (result, i){
                         msg.addAttachment(
                         new builder.HeroCard(session)
@@ -40,7 +58,7 @@ module.exports = function() {
                         //.images([builder.CardImage.create(session, img)])
                         );
                     })
-
+                    }
                     break;
                 case "sponsor":
                     var result = results[0];
@@ -59,7 +77,13 @@ module.exports = function() {
                 session.send(msgTitle);
             }
             resetQuery(session);
-            session.endDialog(msg);
+            if(session.message.source === "sms" && msgArray){
+                msgArray.forEach(function(msg){
+                    session.send(msg);
+                })
+            } else {
+                session.endDialog(msg);
+            }
     }
     ]);
 

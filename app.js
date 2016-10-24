@@ -25,7 +25,7 @@ bot.dialog('/welcome', [
         {
             session.userData.welcome = true;
             session.sendTyping();       
-            var msg = "Welcome to the AI Conference Bot. This message will only open once";
+            var msg = "Hi there! Welcome to the AI World Conference Bot. I can give you information about the sessions, sponsors and people of this event. I can also answer some general questions!";
             session.send(msg);
         }
     }
@@ -42,9 +42,9 @@ bot.dialog('/error', [
 bot.dialog('/promptButtons', [
     function (session) {
         var choices = [
-            "Sessions",
+            "Schedule Explorer",
             "Sponsors/Expos",
-            "People",
+            "People Search",
             "Social Media"]
             
         builder.Prompts.choice(session, "How would you like to explore the AI conference?", choices/*, { listStyle: button }*/);
@@ -55,14 +55,17 @@ bot.dialog('/promptButtons', [
             var selection = results.response.entity;
             // route to corresponding dialogs
             switch (selection) {
-                case "Sessions":
+                case "Schedule Explorer":
                     session.replaceDialog('/sessions');
                     break;
-                case "People":
+                case "People Search":
                     session.replaceDialog('/people');
                     break;
                 case "Sponsors/Expos":
                     session.replaceDialog('/sponsors');
+                    break;
+                case "Social Media":
+                    session.replaceDialog('/socialMedia');
                     break;
                 default:
                     restart(session);

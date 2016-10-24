@@ -5,6 +5,12 @@ module.exports = function(){
         }
     ]);
 
+    bot.dialog('/Bio', [
+        function (session) {
+            session.endDialog("I'm a bot, which really means I'm just an app with a new interface (well, lots of them). Right now I'm talking to you on " + session.message.source + ", but you can talk to me via sms, Skype, or Slack! I'm built on the Microsoft Bot Framework and use natural language processing, Azure Search and Node.js to process human language :)");
+        }
+    ]);
+
     bot.dialog('/ExpoPass', [
         function (session) {
             session.endDialog("All the expo pass benefits are listed on: http://aiworldexpo.com/expo-pass/");

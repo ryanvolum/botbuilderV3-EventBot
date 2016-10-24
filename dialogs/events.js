@@ -5,23 +5,62 @@ module.exports = function(){
         },
         function (session, results) {
             if (results.response) {
-
                 var selection = results.response.entity.split(" ");
                 var Day = selection[0];
 
-                getEventsByDay(Day, function(err, results){
+                getTrackFacets(Day, function(err, results){
                     if(err){
-
+                        
                     } else if (results){
-                        session.privateConversationData.queryResults = results;
-                        session.privateConversationData.searchType = "event";
-                        session.replaceDialog('/ShowResults')
-                    } else {
-                        session.endDialog();
-                    }
+                        var choices = [];
+                        session.privateConversationData.tracksWithChildren = [];
 
+                        for (var i = 0; i < results.length; i++){
+                            var track = results[i]['value'];
+                            if(!track.endsWith("Child")){
+                                choices.push(track);
+                            } else {
+                                session.privateConversationData.tracksWithChildren.push(track.substring(0, track.length - 6))
+                            }
+                        }
+                        if(session.message.source !== "sms"){
+                            choices.push("All " + Day + " Events");
+                        }
+                        session.privateConversationData.Day = Day;
+                        builder.Prompts.choice(session, "Which track are you interested in on " + Day + "?", choices);
+                    } else{
+                    }                 
                 })
             }
-        }
+        },
+        function (session, results){
+            if(results.response){
+                var choice = results.response.entity;                    
+                    getEventsByTrack(choice, session.privateConversationData.Day, function(err, results){
+                        if(err){
+
+                        } else if (results){                   
+                            session.privateConversationData.queryResults = results;
+                            session.privateConversationData.searchType = "event";                            
+                            if(trackHasChildren(session, choice)){
+                                getEventsByTrack(choice + " Child", session.privateConversationData.Day, function(err, results){
+                                    if(err){
+                                    } else if (results){
+                                        var parent = session.privateConversationData.queryResults;
+                                        session.privateConversationData.queryResults = parent.concat(results);
+                                    }
+                                    session.replaceDialog('/ShowResults')
+                                })
+                            } else {
+                            session.replaceDialog('/ShowResults')
+                            }
+                        } else {
+                            session.endDialog();
+                        }
+
+                    })  
+                
+            }             
+        },
     ]);
 }

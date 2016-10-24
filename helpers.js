@@ -59,19 +59,31 @@
         }
     }
 
+    global.trackHasChildren = function(session, track){
+        if(session.privateConversationData.tracksWithChildren){
+            for(var i = 0; i < session.privateConversationData.tracksWithChildren.length; i++){
+                if(session.privateConversationData.tracksWithChildren[i] === track){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     global.generateMessageTitle = function(session){
         if(session.privateConversationData.searchType && session.privateConversationData.queryResults){
             var result = session.privateConversationData.queryResults;
             var msgTitle;
             switch(session.privateConversationData.searchType){
                 case "person":
+                /*
                     if (result.length > 1) {                        
                         msgTitle = "Here are the people that best match your search:";
-                    } else {                        
-                        msgTitle = "Here is the person who best matches your search. ";
-                        if(session.message.source == "sms"){
-                            msgTitle += "This might take a bit :)";
-                        }
+                    } else {   
+                */                     
+                    msgTitle = "Here is the person who best matches your search: ";
+                    if(session.message.source == "sms"){
+                        msgTitle += "This might take a bit :)";
                     }
                     break;
                 case "event":
