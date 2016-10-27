@@ -48,7 +48,7 @@
         session.privateConversationData.clickingButtons = false;
         session.privateConversationData.queryResults = null;
         session.privateConversationData.searchType = null;
-        session.privateConversationData.speakersEvents = null;
+        session.privateConversationData.tracksWithChildren = null;
     }
 
     global.restartDialog = function(session, target) {
@@ -56,6 +56,21 @@
             session.cancelDialog(0, target);
         } else {
             session.replaceDialog(target);
+        }
+    }
+
+    global.sortEvents = function(session){
+        if(session.privateConversationData.queryResults && session.privateConversationData.queryResults[0]){
+            session.privateConversationData.queryResults.sort(function (a, b){
+                a.eventID = parseInt(a.eventID);
+                b.eventID = parseInt(b.eventID);
+                if(a.eventID > b.eventID){
+                    return 1;
+                } if(a.eventID < b.eventID){
+                    return -1;
+                } 
+                return 0;
+            })
         }
     }
 
@@ -69,6 +84,24 @@
         }
         return false;
     }
+
+    global.performQuery = function (queryString, callback){
+        var querySpec = {
+            query: queryString
+        };        
+        // query documentDB for speaker's events
+        client.queryDocuments(collLink, querySpec).toArray(function (err, results) {    
+            if(err){
+                callback(err);
+            } else if (results){
+                var s = "";
+                callback(null, results);
+            } else {
+                callback(null, null);
+            }         
+        });
+    }
+
 
     global.generateMessageTitle = function(session){
         if(session.privateConversationData.searchType && session.privateConversationData.queryResults){
@@ -87,7 +120,12 @@
                     }
                     break;
                 case "event":
-                    if (result.length > 1) {                        
+                    if(session.message.text.toLowerCase().endsWith("event(s)")){
+                        var firstName = session.message.text.split(" ")[0];
+                        //remove "'s"
+                        firstName = firstName.substring(0, firstName.length -2);
+                        msgTitle = "Here are the events that " + firstName + " is speaking at";
+                    } else if (result.length > 1) {                        
                         msgTitle = "Here are the events that best match your search:";
                     } else {                        
                         msgTitle = "Here is the event that best matches your search:";

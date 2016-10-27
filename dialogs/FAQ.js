@@ -1,4 +1,4 @@
-module.exports = function(){
+module.exports = function () {
     bot.dialog('/PressRoom', [
         function (session) {
             session.endDialog("Please go to the Stockton room");
@@ -20,29 +20,29 @@ module.exports = function(){
     //TODO: Breakfast or lunch?
     bot.dialog('/Food', [
         function (session, entities) {
-            if(entities.entities[0].entity === "breakfast"){
+            if (entities.entities[0].entity === "breakfast") {
                 session.endDialog("There will be continental breakfast available starting at 8am on Tuesday, Nov 8 which is sponsored by WorkFusion in the Cyril Magnin ballroom. There will be continental breakfast available starting at 8am on Wednesday, Nov 9 available in the 4th floor lobby and outside of the Cyril Magnin ballroom");
-            } else if (entities.entities[0].entity === "lunch"){
+            } else if (entities.entities[0].entity === "lunch") {
                 session.endDialog("Lunches are available on Tuesday, Nov 8 at 12:15pm and Wednesday, Nov 9 at 12:20pm. Lunches will be available outside of the Cyril Magnin ballroom");
             }
         }
 
-            /*
-            if(!entities){
-                builder.Prompts.choice(session, "Are you interested in breakfast or lunch?", "Breakfast|Lunch")
-            } else {
-                
-            }
-
-        },
-        function (session, entities, results){
-            if(entities[0].entity === "Breakfast"){
-                session.endDialog("breakfastmessage");
-            } else if (entities[0].entity === "Lunch"){
-                session.endDialog("LunchMEssage");
-            }
+        /*
+        if(!entities){
+            builder.Prompts.choice(session, "Are you interested in breakfast or lunch?", "Breakfast|Lunch")
+        } else {
+            
         }
-        */
+
+    },
+    function (session, entities, results){
+        if(entities[0].entity === "Breakfast"){
+            session.endDialog("breakfastmessage");
+        } else if (entities[0].entity === "Lunch"){
+            session.endDialog("LunchMEssage");
+        }
+    }
+    */
     ]);
 
     bot.dialog('/TechSolutionsTheater', [

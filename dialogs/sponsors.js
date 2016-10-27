@@ -8,17 +8,16 @@ module.exports = function(){
                 performSearch(sponsor, 'sponsorsindex', function(err, results) {
                     if(err) {
                     }               
-                    if(results) {
+                    if(results && results[0] && results[0]['@search.score'] && results[0]['@search.score'] > .1) {
                         //Checking relevance. >2 generally requires an exact event title match. Checking some buttons right now for some reason
-                        if (results[0]['@search.score'] > .1) {
-                            session.privateConversationData.queryResults = results;  
-                            session.privateConversationData.searchType = "sponsor";
-                            session.replaceDialog('/ShowResults');     
-                        } else {
-                            // No sufficiently good results to reset query and restart
-                            session.replaceDialog('/');
-                        }                    
-                    } else{}
+                        session.privateConversationData.queryResults = results;  
+                        session.privateConversationData.searchType = "sponsor";
+                        session.replaceDialog('/ShowResults');                          
+                    } else{
+                        // No sufficiently good results to reset query and restart
+                        session.send("I could not find a sponsor by that name");
+                        session.replaceDialog('/promptButtons');
+                    }
                 });
 //            var name = results.response;
 //            session.endDialog("You searched for " + name + "!");

@@ -5,5 +5,5 @@ exports.connection = {
  
  exports.names = {  
      database: 'db',
-     collection: 'Events'
+     collection: 'Sessions'
  };
