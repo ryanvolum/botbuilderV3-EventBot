@@ -14,24 +14,19 @@ module.exports = function () {
                     } else if (results && results[0] && results[0]['value']) {
                         var choices = [];
                         session.privateConversationData.tracksWithChildren = [];
-
                         for (var i = 0; i < results.length; i++) {
                             var track = results[i]['value'];
                             if (!track.endsWith("Child")) {
-
                                 choices.push(track);
                             } else {
                                 session.privateConversationData.tracksWithChildren.push(track.substring(0, track.length - 6))
                             }
                         }
-                        /*
-                        if(session.message.source !== "sms"){
-                            choices.push("All " + Day + " Events");
-                        }
-                        */
+
                         session.privateConversationData.Day = Day;
                         builder.Prompts.choice(session, "Which track are you interested in on " + Day + "?", choices);
                     } else {
+                        session.send("I wasn't able to find any events on that day :0");
                     }
                 })
             }

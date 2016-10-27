@@ -1,3 +1,4 @@
+require('./localKeys.js')();
 require('./globals.js')(); // global configurations
 require('./capitalize.js')(); // adding capitalize method to the string prototype
 require('./config.js')();
@@ -6,6 +7,7 @@ require('./helpers.js')();
 require('./search.js')();
 require('./callLUIS.js')();
 require('./msgMiddleware.js')(); // message middleware
+
 
 // Entry point of the bot
 bot.dialog('/', [

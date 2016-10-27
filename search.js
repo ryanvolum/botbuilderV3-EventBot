@@ -26,8 +26,8 @@ module.exports = function() {
 
     global.getTrackFacets = function(day, callback) {
         var request = require('request');
-        var apiKey = process.env.AZURE_SEARCH_READ_KEY
-        request('https://aiconfsearch.search.windows.net/indexes/sessionindex/docs?api-key=' + apiKey + '&api-version=2015-02-28&$filter=Day eq \'Monday\'&facet=Track', function (error, response, body) {
+        var apiKey = process.env.AZURE_SEARCH_READ_KEY ? process.env.AZURE_SEARCH_READ_KEY : localApiKey;
+        request('https://aiconfsearch.search.windows.net/indexes/sessionindex/docs?api-key=' + apiKey + '&api-version=2015-02-28&$filter=Day eq \'' + day + '\'&facet=Track', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var result = JSON.parse(body);
                 if(result && result['@search.facets'] && result['@search.facets'].Track){

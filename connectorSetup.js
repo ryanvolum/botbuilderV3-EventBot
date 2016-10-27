@@ -4,8 +4,8 @@ module.exports = function() {
     global.builder = require('botbuilder');
 
     var connector = new builder.ChatConnector({
-            appId: process.env.MICROSOFT_APP_ID,
-            appPassword: process.env.MICROSOFT_APP_PASSWORD,
+            appId: process.env.MICROSOFT_APP_ID ? process.env.MICROSOFT_APP_ID : localAppId,
+            appPassword: process.env.MICROSOFT_APP_PASSWORD ? process.env.MICROSOFT_APP_PASSWORD : localAppPassword,
            gzipData: true
         });
 
