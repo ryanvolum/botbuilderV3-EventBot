@@ -1,4 +1,4 @@
-require('./localKeys.js')();
+//require('./localKeys.js')();
 require('./globals.js')(); // global configurations
 require('./capitalize.js')(); // adding capitalize method to the string prototype
 require('./config.js')();
