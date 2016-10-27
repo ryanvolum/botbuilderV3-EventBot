@@ -17,7 +17,7 @@ module.exports = function () {
             } else if (msg.toLowerCase() === "hi") {
                 restart(session);
                 
-            } else if (!session.privateConversationData.clickingButtons && msg != "Schedule Explorer" && msg != "Sessions/Expos" && msg != "People Search" != "Social Media" && msg != "Breakfast" && msg != "Lunch") {
+            } else if (!session.privateConversationData.clickingButtons && msg != "Schedule Explorer" && msg != "Sessions/Expos" && msg != "People Search" && msg != "Social Media" && msg != "Breakfast" && msg != "Lunch") {
                 recognizeThis(msg, modelUrl, function (err, results, entities) {
                     var s = "";
                     if (results && results[0] && results[0].intent && results[0].score > .5 && results[0].intent != "None") {
