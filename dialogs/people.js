@@ -13,10 +13,7 @@ module.exports = function () {
                     session.privateConversationData.queryResults = results;
                     session.privateConversationData.searchType = "person";
 
-                    //for Skype
-                    if(session.message.source.toLowerCase() === "skype"){
-                        session.privateConversationData.fullBio = results[0].Description;
-                    }
+
                     //Find speaker's events and save them to privateConversationData for later use (if events button is clicked)
                     var queryString = "SELECT * FROM c WHERE CONTAINS(c.Speakers, \"" + name + "\")";
                     performQuery(queryString, function (err, results) {

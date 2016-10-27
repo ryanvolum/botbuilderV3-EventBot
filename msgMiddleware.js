@@ -12,11 +12,12 @@ module.exports = function () {
 
             } else if (msg.toLowerCase() === "full bio"){
                 session.send(session.privateConversationData.fullBio);
-                //session.endDialog(session.privateConversationData.fullBio);
+            } else if (msg.toLowerCase().startsWith("full description")){
+                session.send(session.privateConversationData.fullDescription[msg.substring(msg.length - 1, msg.length) - 1]);
             } else if (msg.toLowerCase() === "hi") {
                 restart(session);
                 
-            } else if (!session.privateConversationData.clickingButtons && msg != "Schedule Explorer" && msg != "Sessions/Expos" && msg != "People Search" != "Social Media") {
+            } else if (!session.privateConversationData.clickingButtons && msg != "Schedule Explorer" && msg != "Sessions/Expos" && msg != "People Search" != "Social Media" && msg != "Breakfast" && msg != "Lunch") {
                 recognizeThis(msg, modelUrl, function (err, results, entities) {
                     var s = "";
                     if (results && results[0] && results[0].intent && results[0].score > .5 && results[0].intent != "None") {

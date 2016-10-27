@@ -19,8 +19,6 @@ module.exports = function(){
                         session.replaceDialog('/promptButtons');
                     }
                 });
-//            var name = results.response;
-//            session.endDialog("You searched for " + name + "!");
         }
     ]);
 }

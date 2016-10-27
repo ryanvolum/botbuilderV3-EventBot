@@ -41,6 +41,15 @@ bot.dialog('/error', [
         }
 ]);
 
+bot.dialog('/socialMedia', [
+    function (session) {
+        var msg = "Tweet about the event @AIWorldExpo@!"
+        session.send(msg);
+        global.restartDialog(session,'/promptButtons');
+
+    }
+]);
+
 bot.dialog('/promptButtons', [
     function (session) {
         var choices = [
@@ -48,8 +57,11 @@ bot.dialog('/promptButtons', [
             "Sponsors/Expos",
             "People Search",
             "Social Media"]
-            
-        builder.Prompts.choice(session, "How would you like to explore the AI conference?", choices/*, { listStyle: button }*/);
+        if(session.message.source === "skype"){
+            builder.Prompts.choice(session, "How would you like to explore the AI conference?", choices, { listStyle: builder.ListStyle.button });
+        } else {
+             builder.Prompts.choice(session, "How would you like to explore the AI conference?", choices);
+        }
     },
     function (session, results) {
         if (results.response) {

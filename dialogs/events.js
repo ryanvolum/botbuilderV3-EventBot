@@ -1,7 +1,11 @@
 module.exports = function () {
     bot.dialog('/sessions', [
         function (session) {
-            builder.Prompts.choice(session, "What day are you interested in?", ['Monday 11/7', 'Tuesday 11/8', 'Wednesday 11/9']);
+            if(session.message.source === "skype"){
+                builder.Prompts.choice(session, "What day are you interested in?", ['Monday 11/7', 'Tuesday 11/8', 'Wednesday 11/9'], { listStyle: builder.ListStyle.button });                
+            } else {
+                builder.Prompts.choice(session, "What day are you interested in?", ['Monday 11/7', 'Tuesday 11/8', 'Wednesday 11/9']);
+            }
         },
         function (session, results) {
             if (results.response) {
@@ -16,7 +20,7 @@ module.exports = function () {
                         session.privateConversationData.tracksWithChildren = [];
                         for (var i = 0; i < results.length; i++) {
                             var track = results[i]['value'];
-                            if (!track.endsWith("Child")) {
+                            if (!track.endsWith("Child") && track !== "" && track !== "lunch") {
                                 choices.push(track);
                             } else {
                                 session.privateConversationData.tracksWithChildren.push(track.substring(0, track.length - 6))
@@ -24,7 +28,11 @@ module.exports = function () {
                         }
 
                         session.privateConversationData.Day = Day;
-                        builder.Prompts.choice(session, "Which track are you interested in on " + Day + "?", choices);
+                        if(session.message.source === "skype"){
+                            builder.Prompts.choice(session, "Which track are you interested in on " + Day + "?", choices, { listStyle: builder.ListStyle.button });
+                        } else {
+                            builder.Prompts.choice(session, "Which track are you interested in on " + Day + "?", choices);
+                        }
                     } else {
                         session.send("I wasn't able to find any events on that day :0");
                     }

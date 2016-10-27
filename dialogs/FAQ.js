@@ -19,11 +19,28 @@ module.exports = function () {
 
     //TODO: Breakfast or lunch?
     bot.dialog('/Food', [
-        function (session, entities) {
-            if (entities.entities[0].entity === "breakfast") {
-                session.endDialog("There will be continental breakfast available starting at 8am on Tuesday, Nov 8 which is sponsored by WorkFusion in the Cyril Magnin ballroom. There will be continental breakfast available starting at 8am on Wednesday, Nov 9 available in the 4th floor lobby and outside of the Cyril Magnin ballroom");
-            } else if (entities.entities[0].entity === "lunch") {
-                session.endDialog("Lunches are available on Tuesday, Nov 8 at 12:15pm and Wednesday, Nov 9 at 12:20pm. Lunches will be available outside of the Cyril Magnin ballroom");
+        function (session, entities, next) {
+            if (entities && entities.entities[0] && entities.entities[0].entity) {
+                if (entities.entities[0].entity === "breakfast"){
+                    session.endDialog("There will be continental breakfast available starting at 8am on Tuesday, Nov 8 which is sponsored by WorkFusion in the Cyril Magnin ballroom. There will be continental breakfast available starting at 8am on Wednesday, Nov 9 available in the 4th floor lobby and outside of the Cyril Magnin ballroom");
+                } else if (entities.entities[0].entity === "lunch"){
+                    session.endDialog("Lunches are available on Tuesday, Nov 8 at 12:15pm and Wednesday, Nov 9 at 12:20pm. Lunches will be available outside of the Cyril Magnin ballroom");
+                }
+            } else {
+                if(session.message.source === "skype"){
+                    builder.Prompts.choice(session, "Are you interested in breakfast or lunch?", "Breakfast|Lunch", { listStyle: builder.ListStyle.button });
+                } else {
+                    builder.Prompts.choice(session, "Are you interested in breakfast or lunch?", "Breakfast|Lunch");
+                }
+            }
+        },
+        function (session, results) {
+            if (results.response) {
+                if (results.response.entity.toLowerCase() === "breakfast") {
+                    session.endDialog("There will be continental breakfast available starting at 8am on Tuesday, Nov 8 which is sponsored by WorkFusion in the Cyril Magnin ballroom. There will be continental breakfast available starting at 8am on Wednesday, Nov 9 available in the 4th floor lobby and outside of the Cyril Magnin ballroom");
+                } else if (results.response.entity.toLowerCase() === "lunch") {
+                    session.endDialog("Lunches are available on Tuesday, Nov 8 at 12:15pm and Wednesday, Nov 9 at 12:20pm. Lunches will be available outside of the Cyril Magnin ballroom");
+                }
             }
         }
 
@@ -34,14 +51,7 @@ module.exports = function () {
             
         }
 
-    },
-    function (session, entities, results){
-        if(entities[0].entity === "Breakfast"){
-            session.endDialog("breakfastmessage");
-        } else if (entities[0].entity === "Lunch"){
-            session.endDialog("LunchMEssage");
-        }
-    }
+
     */
     ]);
 
