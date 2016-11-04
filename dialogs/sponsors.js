@@ -5,7 +5,7 @@ module.exports = function(){
         },
         function (session, results) {
             var sponsor = results.response;
-                performSearch(sponsor, 'sponsorsindex', function(err, results) {
+                performSearch(sponsor, 'sponsorindex', function(err, results) {
                     if(err) {
                     }               
                     if(results && results[0] && results[0]['@search.score'] && results[0]['@search.score'] > .1) {

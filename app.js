@@ -27,7 +27,7 @@ bot.dialog('/welcome', [
         {
             session.userData.welcome = true;
             session.sendTyping();       
-            var msg = "Hi there! I'm a helper bot for the AI World Conference. I was built with a very specific task in mind - to help users access information quickly. I can give you information about the sessions, sponsors and people of this event. I can also answer some general questions!";
+            var msg = "Hi there! I'm a helper bot for the AI World Conference. I was built with a very specific task in mind - to help users access information quickly. I can help you find info about the sessions, speakers and people of this event. I can also answer some general questions!";
             session.send(msg);
         }
     }

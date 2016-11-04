@@ -7,7 +7,7 @@ module.exports = function () {
 
     bot.dialog('/Bio', [
         function (session) {
-            session.endDialog("I'm a bot, which really means I'm just an app with a new interface (well, lots of them). Right now I'm talking to you on " + session.message.source + ", but you can talk to me via sms, Skype, or Slack! I'm built on the Microsoft Bot Framework and use natural language processing, Azure Search and Node.js to process human language :)");
+            session.endDialog("I'm a demonstration of how bots can change the way we access information. Right now I'm talking to you on " + session.message.source + ", but I interact through Skype and Slack, presenting users with a guided conversation to access details about sessions, speakers and sponsors, along with general event info. I use some NLP to answer basic questions, but more than anything I intend to demonstrate the value in using rich controls like buttons, images and carousels along with cloud services like search to filter through an underlying dataset. ");
         }
     ]);
 
