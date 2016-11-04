@@ -1,0 +1,379 @@
+{
+  "luis_schema_version": "1.3.0",
+  "name": "AIWorld",
+  "desc": "",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "Address"
+    },
+    {
+      "name": "AIWorldInfo"
+    },
+    {
+      "name": "Bio"
+    },
+    {
+      "name": "ExpoPass"
+    },
+    {
+      "name": "Food"
+    },
+    {
+      "name": "From"
+    },
+    {
+      "name": "Management"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Presentations"
+    },
+    {
+      "name": "PressRoom"
+    },
+    {
+      "name": "Recording"
+    },
+    {
+      "name": "SpeakerBadge"
+    },
+    {
+      "name": "TechSolutionsTheater"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Meal"
+    }
+  ],
+  "composites": [],
+  "bing_entities": [],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "expo pass",
+      "intent": "ExpoPass",
+      "entities": []
+    },
+    {
+      "text": "what are the benefits of registering for an expo pass?",
+      "intent": "ExpoPass",
+      "entities": []
+    },
+    {
+      "text": "where can i register for an expo pass?",
+      "intent": "ExpoPass",
+      "entities": []
+    },
+    {
+      "text": "what good is an expo pass?",
+      "intent": "ExpoPass",
+      "entities": []
+    },
+    {
+      "text": "tell me about the expo pass",
+      "intent": "ExpoPass",
+      "entities": []
+    },
+    {
+      "text": "speaker badge",
+      "intent": "SpeakerBadge",
+      "entities": []
+    },
+    {
+      "text": "where can i get my speaker badge?",
+      "intent": "SpeakerBadge",
+      "entities": []
+    },
+    {
+      "text": "i need a speaker badge",
+      "intent": "SpeakerBadge",
+      "entities": []
+    },
+    {
+      "text": "get a speaker badge",
+      "intent": "SpeakerBadge",
+      "entities": []
+    },
+    {
+      "text": "press room",
+      "intent": "PressRoom",
+      "entities": []
+    },
+    {
+      "text": "where is the press room?",
+      "intent": "PressRoom",
+      "entities": []
+    },
+    {
+      "text": "where can i find the press room?",
+      "intent": "PressRoom",
+      "entities": []
+    },
+    {
+      "text": "management",
+      "intent": "Management",
+      "entities": []
+    },
+    {
+      "text": "show management",
+      "intent": "Management",
+      "entities": []
+    },
+    {
+      "text": "where are the lunches being served?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "lunch",
+      "intent": "Food",
+      "entities": [
+        {
+          "entity": "Meal",
+          "startPos": 0,
+          "endPos": 0
+        }
+      ]
+    },
+    {
+      "text": "when is lunch?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "i'm hungry",
+      "intent": "Food",
+      "entities": []
+    },
+    {
+      "text": "breakfast",
+      "intent": "Food",
+      "entities": [
+        {
+          "entity": "Meal",
+          "startPos": 0,
+          "endPos": 0
+        }
+      ]
+    },
+    {
+      "text": "is there breakfast?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "where can i get breakfast?",
+      "intent": "Food",
+      "entities": [
+        {
+          "entity": "Meal",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "will there be breakfast available at the conference?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "where is the ai technology solutions theater?",
+      "intent": "TechSolutionsTheater",
+      "entities": []
+    },
+    {
+      "text": "technology solutions theater",
+      "intent": "TechSolutionsTheater",
+      "entities": []
+    },
+    {
+      "text": "ai solutions theater",
+      "intent": "TechSolutionsTheater",
+      "entities": []
+    },
+    {
+      "text": "where is ai world being held?",
+      "intent": "Address",
+      "entities": []
+    },
+    {
+      "text": "where is ai world?",
+      "intent": "Address",
+      "entities": []
+    },
+    {
+      "text": "where is the conference?",
+      "intent": "Address",
+      "entities": []
+    },
+    {
+      "text": "will i be able to get a copy of the presentations?",
+      "intent": "Presentations",
+      "entities": []
+    },
+    {
+      "text": "is the conference being recorded by audio or video?",
+      "intent": "Recording",
+      "entities": []
+    },
+    {
+      "text": "is the conference being recorded?",
+      "intent": "Recording",
+      "entities": []
+    },
+    {
+      "text": "jan lasek",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "who is robert bugocki?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "where can i see a conference recording?",
+      "intent": "Recording",
+      "entities": []
+    },
+    {
+      "text": "where are the recordings?",
+      "intent": "Recording",
+      "entities": []
+    },
+    {
+      "text": "where can i grab food?",
+      "intent": "Food",
+      "entities": []
+    },
+    {
+      "text": "where can i get lunch?",
+      "intent": "Food",
+      "entities": [
+        {
+          "entity": "Meal",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "i need to eat",
+      "intent": "Food",
+      "entities": []
+    },
+    {
+      "text": "should i get an expo pass?",
+      "intent": "ExpoPass",
+      "entities": []
+    },
+    {
+      "text": "can i grab this presentation?",
+      "intent": "Presentations",
+      "entities": []
+    },
+    {
+      "text": "what's the conference address?",
+      "intent": "Address",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "people",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "artificial",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "i want breakfast",
+      "intent": "Food",
+      "entities": [
+        {
+          "entity": "Meal",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "who are you?",
+      "intent": "Bio",
+      "entities": []
+    },
+    {
+      "text": "what are you?",
+      "intent": "Bio",
+      "entities": []
+    },
+    {
+      "text": "tell me about yourself",
+      "intent": "Bio",
+      "entities": []
+    },
+    {
+      "text": "where do you come from?",
+      "intent": "From",
+      "entities": []
+    },
+    {
+      "text": "what's your deal?",
+      "intent": "Bio",
+      "entities": []
+    },
+    {
+      "text": "tell me about the conference",
+      "intent": "AIWorldInfo",
+      "entities": []
+    },
+    {
+      "text": "tell me about ai world",
+      "intent": "AIWorldInfo",
+      "entities": []
+    },
+    {
+      "text": "what is the purpose of this conference?",
+      "intent": "AIWorldInfo",
+      "entities": []
+    },
+    {
+      "text": "what is this conference?",
+      "intent": "AIWorldInfo",
+      "entities": []
+    },
+    {
+      "text": "what hotel is the conference at?",
+      "intent": "Address",
+      "entities": []
+    },
+    {
+      "text": "which hotel should i go to?",
+      "intent": "Address",
+      "entities": []
+    },
+    {
+      "text": "which hotel?",
+      "intent": "Address",
+      "entities": []
+    },
+    {
+      "text": "ai world",
+      "intent": "AIWorldInfo",
+      "entities": []
+    }
+  ]
+}

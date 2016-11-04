@@ -49,16 +49,6 @@ module.exports = function () {
                 }
             }
         }
-
-        /*
-        if(!entities){
-            builder.Prompts.choice(session, "Are you interested in breakfast or lunch?", "Breakfast|Lunch")
-        } else {
-            
-        }
-
-
-    */
     ]);
 
     bot.dialog('/TechSolutionsTheater', [
