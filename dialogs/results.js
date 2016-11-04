@@ -8,24 +8,21 @@ module.exports = function () {
 
             switch (session.privateConversationData.searchType) {
                 case "person":
-
                     var buttonActions = [];
                     session.privateConversationData.fullBios = [];
-
                     results.forEach(function (result, i) {
-
+                        
+                        //sms has limited experience, so no need for full bio or speaker's event(s) buttons'
                         if (session.message.source !== "sms") {
                             if (result.Sessions && result.Sessions.length > 0 && result.speakerName) {
                                 var firstName = result.speakerName.split(" ")[0];
                                 buttonActions.push(builder.CardAction.imBack(session, result.speakerName + "'s Event(s)", "Speaker's Event(s)"));
-                                
                                 if (session.message.source.toLowerCase() === "skype") {
                                     buttonActions.push(builder.CardAction.imBack(session, result.speakerName + "'s " + "Full Bio", "Full Bio"));
                                     session.privateConversationData.fullBios.push(result.speakerName + " " + result.Description);
                                 }
                             }
                         }
-
                         var img = result.imageURL;
                         msg.addAttachment(
                             new builder.HeroCard(session)
@@ -86,12 +83,12 @@ module.exports = function () {
                 case "sponsor":
                     var result = results[0];
                     // Use default image if none provided
-                    var img = result.imageUrl ? result.imageUrl : "";
+                    var img = result.imageURL ? result.imageURL : "";
                     msg.addAttachment(
                         new builder.HeroCard(session)
                             .title(result.Title)
                             .subtitle(result.Permalink)
-                            .text(result.Content)
+                            .text(result.Description)
                             .images([builder.CardImage.create(session, img)])
                     );
                     break;

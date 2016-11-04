@@ -23,39 +23,38 @@ module.exports = function () {
                 var name = msg.substring(0, msg.length - 11);
                 if (session.privateConversationData.fullBios) {
                     session.privateConversationData.fullBios.forEach(function (Bio, i) {
-                        if(Bio.startsWith(name)){
+                        if (Bio.startsWith(name)) {
                             session.send(Bio.substring(name.length + 1, Bio.length));
                         }
                     })
                 }
             } else if (msg.toLowerCase().startsWith("full description")) {
                 session.send(session.privateConversationData.fullDescription[msg.substring(msg.length - 1, msg.length) - 1]);
-            } else if (msg.toLowerCase() === "hi") {
+            } else if (msg.toLowerCase() === "hi" || msg.toLowerCase() === "hi" || msg.toLowerCase() === "menu" || msg.toLowerCase() === "back") {
                 restart(session);
-
             } else if (!session.privateConversationData.clickingButtons && msg != "Schedule Explorer" && msg != "Sessions/Expos" && msg != "Speaker Search" && msg != "Social Media" && msg != "Breakfast" && msg != "Lunch") {
                 recognizeThis(msg, modelUrl, function (err, results, entities) {
                     var s = "";
                     if (results && results[0] && results[0].intent && results[0].score > .5 && results[0].intent != "None") {
                         session.replaceDialog("/" + results[0].intent, { entities });
                     } else {
-                        performSearch(msg, 'Speakers', function (err, results) {
+                        performSearch(msg, 'speakerindex', function (err, results) {
                             if (err) {
                             }
                             if (results && (results[0]['@search.score'] > .05)) {
                                 //Checking relevance. >2 generally requires an exact event title match. Checking some buttons right now for some reason
                                 session.privateConversationData.queryResults = results;
                                 session.privateConversationData.searchType = "person";
-                                session.replaceDialog('/ShowResults', { entities });
+                                session.reset('/ShowResults', { entities });
                             } else {
                                 //Search sponsor collection
-                                performSearch(msg, 'sponsorsindex', function (err, results) {
+                                performSearch(msg, 'sponsorindex', function (err, results) {
                                     if (err) {
                                     }
                                     if (results && (results[0]['@search.score'] > .05)) {
                                         session.privateConversationData.queryResults = results;
                                         session.privateConversationData.searchType = "sponsor";
-                                        session.replaceDialog('/ShowResults');
+                                        session.reset('/ShowResults');
                                     }
                                     else {
                                         next();
