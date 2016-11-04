@@ -11,6 +11,12 @@ module.exports = function () {
         }
     ]);
 
+    bot.dialog('/AIWorldInfo', [
+        function (session) {
+            session.endDialog("AI World is the nation's largest AI business conference. Our mission is simple: learn how to successfully harness intelligent technologies to build competitive advantage, drive new business opportunities and accelerate innovation efforts.");
+        }
+    ]);
+
     bot.dialog('/ExpoPass', [
         function (session) {
             session.endDialog("All the expo pass benefits are listed on: http://aiworldexpo.com/expo-pass/");

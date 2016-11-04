@@ -27,7 +27,7 @@ bot.dialog('/welcome', [
         {
             session.userData.welcome = true;
             session.sendTyping();       
-            var msg = "Hi there! Welcome to the AI World Conference Bot. I can give you information about the sessions, sponsors and people of this event. I can also answer some general questions!";
+            var msg = "Hi there! I'm a helper bot for the AI World Conference. I was built with a very specific task in mind - to help users access information quickly. I can give you information about the sessions, sponsors and people of this event. I can also answer some general questions!";
             session.send(msg);
         }
     }
@@ -55,12 +55,12 @@ bot.dialog('/promptButtons', [
         var choices = [
             "Schedule Explorer",
             "Sponsors/Expos",
-            "People Search",
+            "Speaker Search",
             "Social Media"]
         if(session.message.source === "skype"){
-            builder.Prompts.choice(session, "How would you like to explore the AI conference?", choices, { listStyle: builder.ListStyle.button });
+            builder.Prompts.choice(session, "How would you like to explore AI World?", choices, { listStyle: builder.ListStyle.button });
         } else {
-             builder.Prompts.choice(session, "How would you like to explore the AI conference?", choices);
+             builder.Prompts.choice(session, "How would you like to explore AI World?", choices);
         }
     },
     function (session, results) {
@@ -72,7 +72,7 @@ bot.dialog('/promptButtons', [
                 case "Schedule Explorer":
                     session.replaceDialog('/sessions');
                     break;
-                case "People Search":
+                case "Speaker Search":
                     session.replaceDialog('/people');
                     break;
                 case "Sponsors/Expos":

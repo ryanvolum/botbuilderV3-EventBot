@@ -12,18 +12,8 @@ module.exports = function () {
                 if (results && results[0]['@search.score'] && results[0]['@search.score'] > .5) {
                     session.privateConversationData.queryResults = results;
                     session.privateConversationData.searchType = "person";
+                    session.replaceDialog('/ShowResults');
 
-
-                    //Find speaker's events and save them to privateConversationData for later use (if events button is clicked)
-                    var queryString = "SELECT * FROM c WHERE CONTAINS(c.Speakers, \"" + name + "\")";
-                    performQuery(queryString, function (err, results) {
-                        if (err) {
-                            console.log(err);
-                        } else if (results && results[0]) {
-                            session.privateConversationData.speakersEvents = results;
-                        }
-                        session.replaceDialog('/ShowResults');
-                    });
                 } else {
                     // No sufficiently good results to reset query and restart
                     session.send("I couldn't find a speaker by that name");

@@ -5,19 +5,35 @@ module.exports = function () {
             var msg = session.message.text;
 
             //User clicked person's events button
-            if(msg.toLowerCase().endsWith("event(s)")){
-                session.privateConversationData.queryResults = session.privateConversationData.speakersEvents;
-                session.privateConversationData.searchType = "event";
-                session.replaceDialog('/ShowResults');
+            if (msg.toLowerCase().endsWith("event(s)")) {
+                var person = msg.substring(0, msg.length - 11);
+                //Find speaker's events and save them to privateConversationData for later use (if events button is clicked)
+                var queryString = "SELECT * FROM c WHERE CONTAINS(c.Speakers, \"" + person + "\")";
+                performQuery(queryString, function (err, results) {
+                    if (err) {
+                        console.log(err);
+                    } else if (results && results[0]) {
+                        session.privateConversationData.queryResults = results;
+                        session.privateConversationData.searchType = "event";
+                        session.replaceDialog('/ShowResults');
+                    }
+                });
 
-            } else if (msg.toLowerCase() === "full bio"){
-                session.send(session.privateConversationData.fullBio);
-            } else if (msg.toLowerCase().startsWith("full description")){
+            } else if (msg.toLowerCase().endsWith("full bio")) {
+                var name = msg.substring(0, msg.length - 11);
+                if (session.privateConversationData.fullBios) {
+                    session.privateConversationData.fullBios.forEach(function (Bio, i) {
+                        if(Bio.startsWith(name)){
+                            session.send(Bio.substring(name.length + 1, Bio.length));
+                        }
+                    })
+                }
+            } else if (msg.toLowerCase().startsWith("full description")) {
                 session.send(session.privateConversationData.fullDescription[msg.substring(msg.length - 1, msg.length) - 1]);
             } else if (msg.toLowerCase() === "hi") {
                 restart(session);
-                
-            } else if (!session.privateConversationData.clickingButtons && msg != "Schedule Explorer" && msg != "Sessions/Expos" && msg != "People Search" && msg != "Social Media" && msg != "Breakfast" && msg != "Lunch") {
+
+            } else if (!session.privateConversationData.clickingButtons && msg != "Schedule Explorer" && msg != "Sessions/Expos" && msg != "Speaker Search" && msg != "Social Media" && msg != "Breakfast" && msg != "Lunch") {
                 recognizeThis(msg, modelUrl, function (err, results, entities) {
                     var s = "";
                     if (results && results[0] && results[0].intent && results[0].score > .5 && results[0].intent != "None") {
