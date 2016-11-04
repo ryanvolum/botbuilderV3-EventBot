@@ -109,11 +109,6 @@ module.exports = function () {
             var msgTitle;
             switch (session.privateConversationData.searchType) {
                 case "person":
-                    /*
-                        if (result.length > 1) {                        
-                            msgTitle = "Here are the people that best match your search:";
-                        } else {   
-                    */
                     if (result.length > 1) {
                         msgTitle = "Here are the people who best matches your search: ";
                     } else {
@@ -132,7 +127,7 @@ module.exports = function () {
                         } else if (results && results.length > 1) {
                             msgTitle = "Here are the events that " + name + " is speaking at";
                         }
-                    } else if (results && result.length > 1) {
+                    } else if (result && result.length > 1) {
                         msgTitle = "Here are the events that best match your search:";
                     } else {
                         msgTitle = "Here is the event that best matches your search:";

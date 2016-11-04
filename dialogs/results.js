@@ -40,10 +40,11 @@ module.exports = function () {
                     if (session.message.source.toLowerCase() == "skype") {
                         session.privateConversationData.fullDescription = [];
 
-                        if (results && results.length === 1)
+                        if (results && results.length === 1){
                             var buttonActions = [];
                         buttonActions.push(builder.CardAction.imBack(session, "Full Description", "Full Description"));
                         session.privateConversationData.fullDescription[0] = results[0].Description;
+                        }
                     }
 
                     if (session.message.source === "sms") {
