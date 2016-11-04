@@ -11,7 +11,7 @@ module.exports = function () {
                     var buttonActions = [];
                     session.privateConversationData.fullBios = [];
                     results.forEach(function (result, i) {
-                        
+
                         //sms has limited experience, so no need for full bio or speaker's event(s) buttons'
                         if (session.message.source !== "sms") {
                             if (result.Sessions && result.Sessions.length > 0 && result.speakerName) {
@@ -39,9 +39,9 @@ module.exports = function () {
                     sortEvents(session);
                     if (session.message.source.toLowerCase() == "skype") {
                         session.privateConversationData.fullDescription = [];
-                    }
-                    if (results && results.length === 1) {
-                        var buttonActions = [];
+
+                        if (results && results.length === 1)
+                            var buttonActions = [];
                         buttonActions.push(builder.CardAction.imBack(session, "Full Description", "Full Description"));
                         session.privateConversationData.fullDescription[0] = results[0].Description;
                     }
@@ -64,7 +64,7 @@ module.exports = function () {
 
                     } else {
                         results.forEach(function (result, i) {
-                            if (results.length > 0 && result.Description.length > 25) {
+                            if (session.message.source.toLowerCase() == "skype" && results.length > 0 && result.Description.length > 25) {
                                 var buttonAction = [builder.CardAction.imBack(session, "Full Description " + (i + 1), "Full Description " + (i + 1))];
                                 session.privateConversationData.fullDescription[i] = result.Description;
                             }
