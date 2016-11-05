@@ -32,6 +32,9 @@ module.exports = function () {
                 session.send(session.privateConversationData.fullDescription[msg.substring(msg.length - 1, msg.length) - 1]);
             } else if (msg.toLowerCase() === "hi" || msg.toLowerCase() === "hi" || msg.toLowerCase() === "menu" || msg.toLowerCase() === "back") {
                 restart(session);
+            } else if (messageIsTrack(session, msg)){
+                session.privateConversationData.Track = msg;
+                session.reset('/querySessions');
             } else if (!session.privateConversationData.clickingButtons && msg != "Schedule Explorer" && msg != "Sessions/Expos" && msg != "Speaker Search" && msg != "Social Media" && msg != "Breakfast" && msg != "Lunch") {
                 recognizeThis(msg, modelUrl, function (err, results, entities) {
                     var s = "";

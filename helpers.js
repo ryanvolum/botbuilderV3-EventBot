@@ -48,7 +48,7 @@ module.exports = function () {
         session.privateConversationData.clickingButtons = false;
         session.privateConversationData.queryResults = null;
         session.privateConversationData.searchType = null;
-        session.privateConversationData.tracksWithChildren = null;
+        session.privateConversationData.Track = null;
     }
 
     global.restartDialog = function (session, target) {
@@ -56,6 +56,19 @@ module.exports = function () {
             session.cancelDialog(0, target);
         } else {
             session.replaceDialog(target);
+        }
+    }
+
+    global.messageIsTrack = function (session, msg) {
+        if(session.privateConversationData.facets && session.privateConversationData.facets.length > 1){
+            for(var i = 0; i < session.privateConversationData.facets.length; i++){
+                if (msg === session.privateConversationData.facets[i]){
+                    return true;
+                } 
+            }
+            return false;
+        } else {
+            return false;
         }
     }
 
@@ -102,6 +115,13 @@ module.exports = function () {
         });
     }
 
+    global.singularize = function (sessionName) {
+        if(sessionName.endsWith("s") && sessionName != "Future of AI and Intelligent Systems" && sessionName != "Local User Groups"){
+            return sessionName.substring(0, sessionName.length - 1);
+        } else {
+            return sessionName;
+        }
+    }
 
     global.generateMessageTitle = function (session) {
         if (session.privateConversationData.searchType && session.privateConversationData.queryResults) {
@@ -128,9 +148,9 @@ module.exports = function () {
                             msgTitle = "Here are the events that " + name + " is speaking at";
                         }
                     } else if (result && result.length > 1) {
-                        msgTitle = "Here are the events that best match your search:";
+                        msgTitle = "Here are the " + result.length + " events in the " + singularize(session.privateConversationData.Track) + " track" + " on " + session.privateConversationData.Day + ":";
                     } else {
-                        msgTitle = "Here is the event that best matches your search:";
+                        msgTitle = "Here is the " + singularize(session.privateConversationData.Track) + "event on " + session.privateConversationData.Day + ":";
                     }
                     break;
                 case "sponsor":
