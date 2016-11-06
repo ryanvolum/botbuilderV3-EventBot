@@ -8,7 +8,6 @@ require('./search.js')();
 require('./callLUIS.js')();
 require('./msgMiddleware.js')(); // message middleware
 
-
 // Entry point of the bot
 bot.dialog('/', [
     function (session) {
@@ -43,7 +42,7 @@ bot.dialog('/error', [
 
 bot.dialog('/socialMedia', [
     function (session) {
-        var msg = "Tweet about the event @AIWorldExpo!"
+        var msg = "Tweet about the event at https://twitter.com/AIWorldExpo!"
         session.send(msg);
         global.restartDialog(session,'/promptButtons');
 
@@ -57,6 +56,7 @@ bot.dialog('/promptButtons', [
             "Sponsors/Expos",
             "Speaker Search",
             "Social Media"]
+
         if(session.message.source === "skype"){
             builder.Prompts.choice(session, "How would you like to explore AI World?", choices, { listStyle: builder.ListStyle.button });
         } else {
