@@ -85,11 +85,15 @@ module.exports = function () {
                     var result = results[0];
                     // Use default image if none provided
                     var img = result.imageURL ? result.imageURL : "";
+
+                    //Grabs first image if their are multiple
                     if(img.includes("|")){
                         img = img.split("|")[0];
                     }
+                    //Accounts for skype rendering of (c) and (6) 
                     if (session.message.source.toLowerCase() === "skype" && result && result.Description.length > 25){
-                        var buttonAction = [builder.CardAction.imBack(session, "Full Sponsor Bio" , "Full Bio ")]
+                        var buttonAction = [builder.CardAction.imBack(session, "Full Sponsor Bio" , "Full Bio ")];
+                        result.Description = result.Description.replace("(c)(6)", "(c6)")
                     }
                     session.privateConversationData.fullSponsorBio = result.Description;
                     msg.addAttachment(

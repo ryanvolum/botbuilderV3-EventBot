@@ -56,10 +56,13 @@ module.exports = function () {
                                 session.privateConversationData.searchType = "person";
                                 session.reset('/ShowResults', { entities });
                             } else {
-                                if (msg.toLowerCase() === "data monsters")
-                                    msg = "datamonsters";
+                                var sponsor = msg.toLowerCase();
+                                //accounting for some azure search confusion
+                                if (sponsor === "data monsters" || sponsor === "hpc wire" || sponsor === "enterprise tech") {
+                                    sponsor = sponsor.split(' ')[0] + sponsor.split(' ')[1];
+                                }
                                 //Search sponsor collection
-                                performSearch(msg, 'sponsorindex', function (err, results) {
+                                performSearch(sponsor, 'sponsorindex', function (err, results) {
                                     if (err) {
                                     }
                                     if (results && (results[0]['@search.score'] > .1)) {
