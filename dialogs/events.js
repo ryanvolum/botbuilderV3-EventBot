@@ -21,7 +21,7 @@ module.exports = function () {
                         for (var i = 0; i < results.length; i++) {
                             var track = results[i]['value'];
                             if (!track.endsWith("Child") && track !== "" && track.toLowerCase() !== "lunch") {
-                                
+
                                 //Accounts for limited button length in slack
                                 if (session.message.source.toLowerCase() === "slack") {
                                     track = shortTrackName(track);
@@ -48,6 +48,9 @@ module.exports = function () {
         function (session, results) {
             if (results.response) {
                 var choice = results.response.entity;
+                if (session.message.source.toLowerCase() === "slack") {
+                    choice = shortTrackName(choice);
+                }
                 getEventsByTrack(choice, session.privateConversationData.Day, function (err, results) {
                     if (err) {
                     } else if (results) {
@@ -79,6 +82,9 @@ module.exports = function () {
         function (session) {
             if (session.privateConversationData.Track) {
                 var choice = session.privateConversationData.Track;
+                if (session.message.source.toLowerCase() === "slack") {
+                    choice = shortTrackName(choice);
+                }
                 getEventsByTrack(choice, session.privateConversationData.Day, function (err, results) {
                     if (err) {
                     } else if (results) {
