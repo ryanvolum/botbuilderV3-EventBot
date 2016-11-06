@@ -20,7 +20,12 @@ module.exports = function () {
                         session.privateConversationData.tracksWithChildren = [];
                         for (var i = 0; i < results.length; i++) {
                             var track = results[i]['value'];
-                            if (!track.endsWith("Child") && track !== "" && track !== "lunch") {
+                            if (!track.endsWith("Child") && track !== "" && track.toLowerCase() !== "lunch") {
+                                
+                                //Accounts for limited button length in slack
+                                if (session.message.source.toLowerCase() === "slack") {
+                                    track = shortTrackName(track);
+                                }
                                 choices.push(track);
                             } else {
                                 session.privateConversationData.tracksWithChildren.push(track.substring(0, track.length - 6))

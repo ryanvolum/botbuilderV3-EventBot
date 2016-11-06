@@ -42,7 +42,7 @@ bot.dialog('/error', [
 
 bot.dialog('/socialMedia', [
     function (session) {
-        var msg = "Tweet about the event at https://twitter.com/AIWorldExpo!"
+        var msg = "Tweet about the event at https://twitter.com/AIWorldExpo !"
         session.send(msg);
         global.restartDialog(session,'/promptButtons');
 

@@ -34,6 +34,8 @@ module.exports = function () {
                         );
                         buttonActions = [];
                     })
+                    var tip = "By the way, you could also find speaker information by just typing in their name in the main menu!";
+
                     break;
                 case "event":
                     sortEvents(session);
@@ -103,6 +105,7 @@ module.exports = function () {
                             .images([builder.CardImage.create(session, img)])
                             .buttons(buttonAction)
                     );
+                    var tip = "By the way, you could have also found this sponsor's information by just typing in \'" + result.Title + "\' in the main menu!";
                     break;
             }
             if (msgTitle) {

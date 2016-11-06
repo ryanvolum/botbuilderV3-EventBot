@@ -60,11 +60,11 @@ module.exports = function () {
     }
 
     global.messageIsTrack = function (session, msg) {
-        if(session.privateConversationData.facets && session.privateConversationData.facets.length > 1){
-            for(var i = 0; i < session.privateConversationData.facets.length; i++){
-                if (msg === session.privateConversationData.facets[i]){
+        if (session.privateConversationData.facets && session.privateConversationData.facets.length > 1) {
+            for (var i = 0; i < session.privateConversationData.facets.length; i++) {
+                if (msg === session.privateConversationData.facets[i]) {
                     return true;
-                } 
+                }
             }
             return false;
         } else {
@@ -116,10 +116,28 @@ module.exports = function () {
     }
 
     global.singularize = function (sessionName) {
-        if(sessionName.endsWith("s") && sessionName != "Future of AI and Intelligent Systems" && sessionName != "Local User Groups"){
+        if (sessionName.endsWith("s") && sessionName != "Future of AI and Intelligent Systems" && sessionName != "Local User Groups") {
             return sessionName.substring(0, sessionName.length - 1);
         } else {
             return sessionName;
+        }
+    }
+
+    // send a message with a delay
+    global.sendTip = function (session, tip) {
+        if (session.userData.usedPrompts) {
+            setTimeout(function () {
+                session.send(tip);
+            }, 5000);
+        }
+    }
+
+    global.shortTrackName = function (trackName) {
+        var lookup = require('./shortDictionary').lookup;
+        if (lookup.dictionary.hasOwnProperty(trackName)) {
+            return lookup.dictionary[trackName];
+        } else {
+            return trackName;
         }
     }
 
