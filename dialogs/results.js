@@ -85,6 +85,9 @@ module.exports = function () {
                     var result = results[0];
                     // Use default image if none provided
                     var img = result.imageURL ? result.imageURL : "";
+                    if(img.includes("|")){
+                        img = img.split("|")[0];
+                    }
                     msg.addAttachment(
                         new builder.HeroCard(session)
                             .title(result.Title)

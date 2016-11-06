@@ -54,11 +54,13 @@ module.exports = function () {
                                 session.privateConversationData.searchType = "person";
                                 session.reset('/ShowResults', { entities });
                             } else {
+                                if(msg.toLowerCase() === "data monsters")
+                                    msg = "datamonsters";
                                 //Search sponsor collection
                                 performSearch(msg, 'sponsorindex', function (err, results) {
                                     if (err) {
                                     }
-                                    if (results && (results[0]['@search.score'] > .05)) {
+                                    if (results && (results[0]['@search.score'] > .1)) {
                                         session.privateConversationData.queryResults = results;
                                         session.privateConversationData.searchType = "sponsor";
                                         session.reset('/ShowResults');
