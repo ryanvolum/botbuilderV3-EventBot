@@ -46,11 +46,12 @@ module.exports = function () {
                             }
                             if (results && (results[0]['@search.score'] > .05) && results[0].speakerName) {
                                 //Checking relevance. >2 generally requires an exact event title match. Checking some buttons right now for some reason
-                                if(results[0].speakerName === name){
-                                    session.privateConversationData.queryResults = results[0];        
+                                if(results[0].speakerName === msg){
+                                    session.privateConversationData.queryResults = [results[0]];        
                                 } else {
                                 session.privateConversationData.queryResults = results;
-                                }                                session.privateConversationData.searchType = "person";
+                                }                                
+                                session.privateConversationData.searchType = "person";
                                 session.reset('/ShowResults', { entities });
                             } else {
                                 //Search sponsor collection
