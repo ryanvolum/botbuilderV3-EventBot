@@ -9,8 +9,12 @@ module.exports = function () {
             performSearch(name, 'speakerindex', function (err, results) {
                 if (err) {
                 }
-                if (results && results[0]['@search.score'] && results[0]['@search.score'] > .5) {
+                if (results && results[0]['@search.score'] && results[0]['@search.score'] > .5 && results[0].speakerName) {
+                    if(results[0].speakerName === name){
+                        session.privateConversationData.queryResults = [results[0]];        
+                    } else {
                     session.privateConversationData.queryResults = results;
+                    }
                     session.privateConversationData.searchType = "person";
                     session.replaceDialog('/ShowResults');
 
