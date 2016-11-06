@@ -65,7 +65,7 @@ module.exports = function () {
 
                     } else {
                         results.forEach(function (result, i) {
-                            if (session.message.source.toLowerCase() == "skype" && results.length > 0 && result.Description.length > 25) {
+                            if (session.message.source.toLowerCase() === "skype" && results.length > 0 && result.Description.length > 25) {
                                 var buttonAction = [builder.CardAction.imBack(session, "Full Description " + (i + 1), "Full Description " + (i + 1))];
                                 session.privateConversationData.fullDescription[i] = result.Description;
                             }
@@ -88,12 +88,16 @@ module.exports = function () {
                     if(img.includes("|")){
                         img = img.split("|")[0];
                     }
+                    if (session.message.source.toLowerCase() === "skype" && result && result.Description.length > 25){
+                        var buttonAction = [builder.CardAction.imBack(session, "Full Sponsor Bio" , "Full Bio ")]
+                    }
+                    session.privateConversationData.fullSponsorBio = result.Description;
                     msg.addAttachment(
                         new builder.HeroCard(session)
                             .title(result.Title)
-                            .subtitle(result.Permalink)
                             .text(result.Description)
                             .images([builder.CardImage.create(session, img)])
+                            .buttons(buttonAction)
                     );
                     break;
             }

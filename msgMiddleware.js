@@ -30,9 +30,11 @@ module.exports = function () {
                 }
             } else if (msg.toLowerCase().startsWith("full description")) {
                 session.send(session.privateConversationData.fullDescription[msg.substring(msg.length - 1, msg.length) - 1]);
+            } else if (msg === "Full Sponsor Bio" && session.privateConversationData.fullSponsorBio && session.message.source.toLowerCase() === "skype") {
+                session.send(session.privateConversationData.fullSponsorBio);
             } else if (msg.toLowerCase() === "hi" || msg.toLowerCase() === "hi" || msg.toLowerCase() === "menu" || msg.toLowerCase() === "back") {
                 restart(session);
-            } else if (messageIsTrack(session, msg)){
+            } else if (messageIsTrack(session, msg)) {
                 session.privateConversationData.Track = msg;
                 session.reset('/querySessions');
             } else if (!session.privateConversationData.clickingButtons && msg != "Schedule Explorer" && msg != "Sessions/Expos" && msg != "Speaker Search" && msg != "Social Media" && msg != "Breakfast" && msg != "Lunch") {
@@ -46,15 +48,15 @@ module.exports = function () {
                             }
                             if (results && (results[0]['@search.score'] > .05) && results[0].speakerName) {
                                 //Checking relevance. >2 generally requires an exact event title match. Checking some buttons right now for some reason
-                                if(results[0].speakerName === msg){
-                                    session.privateConversationData.queryResults = [results[0]];        
+                                if (results[0].speakerName === msg) {
+                                    session.privateConversationData.queryResults = [results[0]];
                                 } else {
-                                session.privateConversationData.queryResults = results;
-                                }                                
+                                    session.privateConversationData.queryResults = results;
+                                }
                                 session.privateConversationData.searchType = "person";
                                 session.reset('/ShowResults', { entities });
                             } else {
-                                if(msg.toLowerCase() === "data monsters")
+                                if (msg.toLowerCase() === "data monsters")
                                     msg = "datamonsters";
                                 //Search sponsor collection
                                 performSearch(msg, 'sponsorindex', function (err, results) {
