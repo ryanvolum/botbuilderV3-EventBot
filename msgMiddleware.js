@@ -46,9 +46,9 @@ module.exports = function () {
                         performSearch(msg, 'speakerindex', function (err, results) {
                             if (err) {
                             }
+                            //Checking relevance. >2 generally requires an exact event title match. Checking some buttons right now for some reason                            
                             if (results && (results[0]['@search.score'] > .05) && results[0].speakerName) {
-                                //Checking relevance. >2 generally requires an exact event title match. Checking some buttons right now for some reason
-                                if (results[0].speakerName === msg) {
+                                if (results[0].speakerName.toLowerCase() === msg.toLowerCase()) {
                                     session.privateConversationData.queryResults = [results[0]];
                                 } else {
                                     session.privateConversationData.queryResults = results;
