@@ -6,7 +6,7 @@ module.exports = function () {
         function (session, results) {
             var name = results.response;
             //search for person
-            performSearch(name, 'speakerindex', function (err, results) {
+            performSearch(name, 'temp', function (err, results) {
                 if (err) {
                 }
                 if (results && results[0]['@search.score'] && results[0]['@search.score'] > .5 && results[0].speakerName) {

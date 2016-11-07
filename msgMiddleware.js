@@ -43,7 +43,7 @@ module.exports = function () {
                     if (results && results[0] && results[0].intent && results[0].score > .5 && results[0].intent != "None") {
                         session.replaceDialog("/" + results[0].intent, { entities });
                     } else {
-                        performSearch(msg, 'speakerindex', function (err, results) {
+                        performSearch(msg, 'temp', function (err, results) {
                             if (err) {
                             }
                             //Checking relevance. >2 generally requires an exact event title match. Checking some buttons right now for some reason                            
