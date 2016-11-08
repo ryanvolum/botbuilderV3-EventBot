@@ -168,7 +168,7 @@ module.exports = function () {
                     } else if (result && result.length > 1) {
                         msgTitle = "Here are the " + result.length + " events in the " + singularize(session.privateConversationData.Track) + " track" + " on " + session.privateConversationData.Day + ":";
                     } else {
-                        msgTitle = "Here is the " + singularize(session.privateConversationData.Track) + "event on " + session.privateConversationData.Day + ":";
+                        msgTitle = "Here is the " + singularize(session.privateConversationData.Track) + " event on " + session.privateConversationData.Day + ":";
                     }
                     break;
                 case "sponsor":

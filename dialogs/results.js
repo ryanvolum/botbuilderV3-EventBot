@@ -69,12 +69,12 @@ module.exports = function () {
                         results.forEach(function (result, i) {
                             if (session.message.source.toLowerCase() === "skype" && results.length > 0 && result.Description.length > 25) {
                                 var buttonAction = [builder.CardAction.imBack(session, "Full Description " + (i + 1), "Full Description " + (i + 1))];
-                                session.privateConversationData.fullDescription[i] = result.Description;
+                                session.privateConversationData.fullDescription[i] = "Speakers: " + result.Speakers + "\n\n" + result.Description;
                             }
                             msg.addAttachment(
                                 new builder.HeroCard(session)
                                     .title(result.Title)
-                                    .subtitle(result.startTime + " to " + result.endTime + " " + result.Speakers + "\n" +
+                                    .subtitle(result.startTime + " to " + result.endTime + " in " + result.Location + " " + result.Speakers + "\n" +
                                     (result.Track.endsWith("Child") ? '' : result.Track + '\n'))
                                     .text(result.Description)
                                     .buttons(buttonAction)
